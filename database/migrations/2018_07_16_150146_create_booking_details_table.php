@@ -14,32 +14,33 @@ class CreateBookingDetailsTable extends Migration
     public function up()
     {
         Schema::create('bookingDetails', function (Blueprint $table) {
-            $table->increments('bd_Id');
-            $table->integer('u_Id');
-            $table->integer('bi_Id');
-            $table->date('bd_DateTravel');
-            $table->string('customerFromCity',100);
-            $table->string('customerToCity',100);
-            $table->integer('bd_NumSeat');
-            $table->integer('bd_Price');
+            $table->increments('bd_id');
+            $table->integer('u_id');
+            $table->integer('bi_id');
+            $table->date('bd_dateTravel');
+            $table->string('bd_departure',100);
+            $table->string('bd_arrival', 100);
+            $table->integer('bd_numSeat');
+            $table->string('bd_time',50);
+            $table->integer('bd_price');
             $table->string('status',50);
             $table->timestamps();
 
-            $table->foreign('u_Id')
-                ->references('u_Id')
+            $table->foreign('u_id')
+                ->references('u_id')
                 ->on('users');
 
             $table->foreign('bi_id')
                 ->references('bi_id')
                 ->on('busInformation');
 
-            $table->foreign('customerFromCity')
-                ->references('bc_Id')
-                ->on('buscity');
+            $table->foreign('bd_departure')
+                ->references('bc_id')
+                ->on('busCity');
 
-            $table->foreign('customerToCity')
-                ->references('bc_Id')
-                ->on('buscity');
+            $table->foreign('bd_arrival')
+                ->references('bc_id')
+                ->on('busCity');
 
         });
     }

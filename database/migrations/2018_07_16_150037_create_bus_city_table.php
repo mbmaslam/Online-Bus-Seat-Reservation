@@ -14,8 +14,8 @@ class CreateBusCityTable extends Migration
     public function up()
     {
         Schema::create('busCity', function (Blueprint $table) {
-            $table->increments('bc_Id');
-            $table->string('bc_Name');
+            $table->increments('bc_id');
+            $table->string('bc_name');
             $table->timestamps();
         });
     }

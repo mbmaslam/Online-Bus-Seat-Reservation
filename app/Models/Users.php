@@ -10,8 +10,10 @@ class Users extends Model
     protected $primaryKey = 'u_id';
 
 
-    public function bookingDetails(){
+    public function bookingDetails()
+    {
 
-
+        return $this->hasMany('namespace App\Models\BookingDetails','u_Id');
     }
+
 }
